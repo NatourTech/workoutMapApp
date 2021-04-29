@@ -4,7 +4,7 @@
     width: 100%;
     diplay: flex;
 
-    display: block;
+    display: none;
   }
 
   .workout {
