@@ -70,8 +70,6 @@ class Cycling extends Workout {
 const run1 = new Running([39, -12], 5.2, 24, 178);
 const cycle1 = new Cycling([39, -12], 5.2, 24, 178);
 
-
-
 /////////////////////////////////////////////////////
 //APPLICATION ARCHITECTURE
 
@@ -83,16 +81,18 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 const formEl = document.querySelector('form');
-
+const mobileSubmit = document.querySelector('.copyright');
+const sidebar = document.querySelector('.sidebar ');
+const mapEvent = document.querySelector('.map1');
 //me
 const list = document.querySelector('ul');
-
 
 class App {
   #map;
   #mapEvent;
   #workout = [];
   constructor() {
+    this._mobileFunctionality();
     //get data from local storage
     this._getLocalStorage();
     //get user position
@@ -119,7 +119,6 @@ class App {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
     const coords = [latitude, longitude];
-    
 
     this.#map = L.map('map').setView(coords, 13);
 
@@ -127,13 +126,13 @@ class App {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.#map);
-   
+
     //Handling clicks on map
     this.#map.on('click', this._showForm.bind(this));
 
     this.#workout.forEach(work => {
-        this._renderWorkoutMarker(work);
-      });
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
@@ -287,13 +286,12 @@ class App {
 
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
-    
+
     if (!workoutEl) return;
 
     const workout = this.#workout.find(
       workout => workout.id === workoutEl.getAttribute('data-id')
     );
-    
 
     this.#map.setView(workout.coords, 13, {
       animate: true,
@@ -310,7 +308,6 @@ class App {
   }
   _getLocalStorage() {
     const data = JSON.parse(localStorage.getItem('workouts'));
-    
 
     if (!data) return;
 
@@ -321,8 +318,41 @@ class App {
   }
 
   reset() {
-      localStorage.removeItem('workouts')
-      location.reload()
+    localStorage.removeItem('workouts');
+    location.reload();
+  }
+
+  displayChange(sidebar) {
+    if (sidebar.style.display === 'none') {
+      sidebar.style.display = 'block';
+    } else {
+      sidebar.style.display = 'none';
+    }
+  }
+
+  _mobileFunctionality() {
+    if (document.documentElement.clientWidth <= 600) {
+      containerWorkouts.addEventListener('click', function (e) {
+        if (
+          e.target.classList.contains('form__btn') ||
+          e.target.classList.contains('workout__details')
+        ) {
+          if (sidebar.style.display === 'none') {
+            sidebar.style.display = 'block';
+          } else {
+            sidebar.style.display = 'none';
+          }
+        }
+      });
+
+      mapEvent.addEventListener('click', function (e) {
+        if (sidebar.style.display === 'none') {
+          sidebar.style.display = 'block';
+        } else {
+          sidebar.style.display = 'none';
+        }
+      });
+    }
   }
 }
 

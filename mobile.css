@@ -1,0 +1,18 @@
+@media all and (max-width: 850px) {
+  .sidebar {
+    
+    width: 100%;
+    diplay: flex;
+
+    display: block;
+  }
+
+  .workout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .form__btn{
+   
+  } */
+}

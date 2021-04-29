@@ -168,7 +168,14 @@ a:visited {
 }
 
 .form__btn {
-  display: none;
+  /* display: none; */
+  background-color: var(--color-dark--2);
+  color: #fff;
+  border-radius:5px ;
+  text-align: center;
+  align-items: center;
+  margin-left: 4.5em;
+  border: 1px solid var(--color-light--1);
 }
 
 .copyright {
@@ -218,5 +225,3 @@ a:visited {
 .cycling-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--1);
 }
-
-
