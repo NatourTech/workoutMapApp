@@ -10,4 +10,8 @@ Go to [workoutMapApp](https://islamic-prayer-time.herokuapp.com/)
 
 workout App is a web app that uses [ google geolocation] and built with vanilla javascript
 
+
+## App Design
+app ERD design using uml diagram app
+
 ![image](https://user-images.githubusercontent.com/63518160/188268611-825dbf99-11eb-4062-a822-7fb730fe0eb3.png)
