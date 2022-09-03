@@ -1,6 +1,6 @@
 # workoutMapApp
 
-
+A web Application that help you to organize your workout geo sites and workout details using google geolocation
 
 Go to [workoutMapApp](https://islamic-prayer-time.herokuapp.com/)
 
